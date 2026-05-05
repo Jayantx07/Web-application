@@ -1,0 +1,38 @@
+<div class="hero min-h-screen relative overflow-hidden bg-white">
+
+  <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary rounded-full blur-[100px] opacity-20"></div>
+  <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary rounded-full blur-[120px] opacity-20"></div>
+  
+  <div class="hero-content flex-col lg:flex-row-reverse z-10 w-full max-w-5xl">
+    <div class="text-center lg:text-left lg:ml-12" @fadeIn>
+      <h1 class="text-5xl font-bold tracking-tight text-neutral pl-5">Welcome to SWTechLabs.</h1>
+      <p class="py-6 text-neutral/70 pl-5 text-lg">Experience the most luxurious hotels with an award-winning interface. Login to reserve your gateway.</p>
+    </div>
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 rounded-[2rem]" @fadeIn>
+      <div class="card-body p-8 space-y-4">
+         <h2 class="text-2xl font-semibold mb-2">Sign in</h2>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text font-medium">Username</span>
+          </label>
+          <input type="text" placeholder="username" class="input input-bordered focus:border-primary transition-colors hover:border-gray-400" [(ngModel)]="username" />
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text font-medium">Password</span>
+          </label>
+          <input type="password" placeholder="password" class="input input-bordered focus:border-primary transition-colors hover:border-gray-400" [(ngModel)]="password" (keyup.enter)="login()"/>
+        </div>
+        
+        <div class="text-error mt-2 text-sm" *ngIf="error">{{error}}</div>
+
+        <div class="form-control mt-6">
+          <button class="btn btn-primary rounded-full hover:scale-105 transition-transform shadow-lg" (click)="login()" [disabled]="loading || !username || !password">
+             <span *ngIf="loading" class="loading loading-spinner"></span>
+             {{loading ? 'Authenticating...' : 'Login'}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
